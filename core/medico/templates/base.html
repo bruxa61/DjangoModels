@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica</title>
+</head>
+
+<body>
+    <h1>Clínica</h1>
+    <nav>
+        <a href="{% url 'cadastro_especialidade' %}">Cadastro de Especialidade</a>
+        <a href="{% url 'listagem_especialidade' %}">Listagem de Especialidades</a>
+        <a href="{% url 'cadastro_medico' %}">Cadastro de Médico</a>
+        <a href="{% 'listagem_medico' %}">Listagem de Especialidade</a>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    
+    <div class="footer">
+        <p>Desenvolvido por Rafaela</p>
+    </div>
+</body>
+</html>
