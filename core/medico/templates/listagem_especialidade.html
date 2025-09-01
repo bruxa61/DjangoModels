@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Especialidades{% endblock %}
+
+{% block content %}
+    <h2>Especialidades Cadastradas</h2>
+    <a href="#">+ Cadastrar Nova Especialidade</a>
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            {% for especialidade in especialidades_exemplo %}
+                <tr>
+                    <td>{{ especialidade.nome }}</td>
+                    <td>
+                        <a href="#"><button>Editar</button></a>
+                        <a href="#"><button>Deletar</button></a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td>Nenhuma especialidade cadastrada.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
