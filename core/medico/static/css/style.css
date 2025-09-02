@@ -1,38 +1,233 @@
+/* Cores da paleta:
+ * #FEF9F8 (Rosa muito claro)
+ * #EFD1D8 (Rosa suave)
+ * #D6CAE3 (Lilás suave)
+ * #EFCACC (Rosa salmão)
+ * #CAC3E4 (Lilás mais escuro)
+ */
+
+/* Estilos gerais */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    background-color: #fef9f8; /* Fundo rosa muito claro */
+    color: #333;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f53636
 }
 
-h1{
-    color: #ff5050;
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
+h1, h2 {
+    color: #333;
+    border-bottom: 2px solid #efcacc; /* Linha de destaque rosa salmão */
+    padding-bottom: 12px;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
+a {
+    color: #cac3e4; /* Lilás para links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #d6cae3;
+}
+
+/* Header e Navegação */
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+    background-color: #efcacc; /* Rosa salmão no cabeçalho */
+    color: #ffffff;
+    padding: 30px;
     text-align: center;
+    border-bottom: 5px solid #d6cae3; /* Borda inferior lilás */
 }
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
-main {
+nav {
+    background-color: #ffffff;
+    text-align: center;
     padding: 20px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
+nav a {
+    display: inline-block;
+    padding: 12px 20px;
+    font-weight: bold;
+    color: #555;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #fef9f8;
+    color: #cac3e4;
+}
+
+/* Formulários */
+form {
+    background-color: #fef9f8; /* Fundo do formulário rosa muito claro */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.02);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #d6cae3; /* Lilás suave na borda */
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: #efd1d8; /* Rosa suave no foco */
+    box-shadow: 0 0 0 4px rgba(239, 209, 216, 0.4);
+}
+
+/* Botões */
+button[type="submit"],
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #cac3e4; /* Lilás para o botão principal */
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     text-align: center;
+}
+
+button[type="submit"]:hover,
+.btn:hover {
+    background-color: #d6cae3; /* Lilás mais claro ao passar o mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background-color: #efd1d8;
+    color: #333;
+    border: 1px solid #d6cae3;
+}
+
+.btn-secondary:hover {
+    background-color: #efcacc;
+    color: #333;
+}
+
+/* Tabelas */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table thead {
+    background-color: #fef9f8; /* Rosa muito claro para o cabeçalho da tabela */
+    color: #555;
+    border-bottom: 2px solid #efd1d8; /* Borda rosa suave */
+}
+
+table th,
+table td {
+    padding: 18px;
+    text-align: left;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #fef9f8; /* Borda sutil entre as linhas */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f7fafc; /* Fundo cinza muito claro para linhas pares */
+}
+
+table tbody tr:last-child {
+    border-bottom: none;
+}
+
+table tbody tr:hover {
+    background-color: #fef9f8; /* Fundo mais claro ao passar o mouse */
+}
+
+.no-data-row {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+}
+
+.table-actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.action-edit,
+.action-delete {
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-sizing: border-box;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.action-edit {
+    background-color: #d6cae3; /* Lilás suave para 'Editar' */
+    color: #ffffff;
+}
+
+.action-edit:hover {
+    background-color: #cac3e4;
+}
+
+.action-delete {
+    background-color: #efd1d8; /* Rosa suave para 'Deletar' */
+    color: #ffffff;
+}
+
+.action-delete:hover {
+    background-color: #efcacc;
 }
