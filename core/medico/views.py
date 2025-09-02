@@ -1,3 +1,76 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import Medico, Especialidade
 
-# Create your views here.
+def lista_especialidades(request):
+    contexto = {'especialidades': Especialidade.objects.all()}
+    return render(request, 'medico/lista_especialidades.html', context=contexto)
+
+def lista_medicos(request):
+    contexto = {'medicos': Medico.objects.all()}
+    return render(request, 'medico/lista_medicos.html', context=contexto)
+
+def cadastro_especialidade(request):
+    if request.method == 'POST':
+        nome_digitado = request.POST.get('nome_especialidade')
+        if nome_digitado:
+            Especialidade.objects.create(nome_especialidade=nome_digitado)
+        return redirect('lista_especialidades')
+    
+    return render(request, 'medico/cadastro_especialidade.html')
+
+def cadastro_medico(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        sobrenome = request.POST.get('sobrenome')
+        email = request.POST.get('email')
+        ids_especialidades = request.POST.getlist('especialidades')
+
+        novo_medico = Medico.objects.create(nome=nome, sobrenome=sobrenome, email=email)
+        novo_medico.nome_especialidade.set(ids_especialidades)
+        
+        return redirect('lista_medicos')
+
+    contexto = {'especialidades': Especialidade.objects.all()}
+    return render(request, 'medico/cadastro_medico.html', context=contexto)
+
+def deletar_especialidade(request, id_especialidade):
+    especialidade_para_deletar = Especialidade.objects.get(id=id_especialidade)
+    especialidade_para_deletar.delete()
+    return redirect('lista_especialidades')
+
+def deletar_medico(request, id_medico):
+    medico_para_deletar = Medico.objects.get(id=id_medico)
+    medico_para_deletar.delete()
+    return redirect('lista_medicos')
+
+def editar_especialidade(request, id_especialidade):
+    especialidade_para_editar = Especialidade.objects.get(id=id_especialidade)
+    if request.method == 'POST':
+        novo_nome = request.POST.get('nome_especialidade')
+        if novo_nome:
+            especialidade_para_editar.nome_especialidade = novo_nome
+            especialidade_para_editar.save()
+        return redirect('lista_especialidades')
+    
+    contexto = {'especialidade': especialidade_para_editar}
+    return render(request, 'medico/editar_especialidade.html', context=contexto)
+
+
+def editar_medico(request, id_medico):
+    medico_para_editar = Medico.objects.get(id=id_medico)
+    if request.method == 'POST':
+        medico_para_editar.nome = request.POST.get('nome')
+        medico_para_editar.sobrenome = request.POST.get('sobrenome')
+        medico_para_editar.email = request.POST.get('email')
+        ids_especialidades = request.POST.getlist('especialidades')
+        
+        medico_para_editar.save()
+        medico_para_editar.nome_especialidade.set(ids_especialidades)
+        
+        return redirect('lista_medicos')
+
+    contexto = {
+        'medico': medico_para_editar,
+        'especialidades': Especialidade.objects.all() 
+    }
+    return render(request, 'medico/editar_medico.html', context=contexto)

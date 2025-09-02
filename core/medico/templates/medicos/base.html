@@ -1,26 +1,21 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Clínica{% endblock %}</title>
+    <title>Gestão da Clínica</title>
 </head>
-
 <body>
-    <h1>Clínica</h1>
+    <header>
+        <h1>Clínica</h1>
+    </header>
     <nav>
-        <a href="{% url 'cadastro_especialidade' %}">Cadastro de Especialidade</a>
-        <a href="{% url 'listagem_especialidade' %}">Listagem de Especialidades</a>
-        <a href="{% url 'cadastro_medico' %}">Cadastro de Médico</a>
-        <a href="{% 'listagem_medico' %}">Listagem de Especialidade</a>
+        <a href="{% url 'lista_medicos' %}">Ver Médicos</a>
+        <a href="{% url 'cadastrar_medico' %}">Cadastrar Médico</a>
+        <a href="{% url 'lista_especialidades' %}">Ver Especialidades</a>
+        <a href="{% url 'cadastrar_especialidade' %}">Cadastrar Especialidade</a>
     </nav>
-
-    {% block content %}
-    {% endblock %}
-    
-    <div class="footer">
-        <p>Desenvolvido por Rafaela</p>
-    </div>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 </body>
 </html>
