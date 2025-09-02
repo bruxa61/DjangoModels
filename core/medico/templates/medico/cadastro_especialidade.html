@@ -5,8 +5,10 @@
     
     <form method="post" action="{% url 'cadastrar_especialidade' %}">
         {% csrf_token %}
-        <label for="nome_especialidade_input">Nome da Especialidade:</label>
-        <input type="text" id="nome_especialidade_input" name="nome_especialidade" required>
-        <button type="submit">Salvar Especialidade</button>
+        <div class="form-group">
+            <label for="nome_especialidade_input">Nome da Especialidade:</label>
+            <input type="text" class="form-control" id="nome_especialidade_input" name="nome_especialidade" required>
+        </div>
+        <button type="submit" class="btn">Salvar Especialidade</button>
     </form>
 {% endblock %}

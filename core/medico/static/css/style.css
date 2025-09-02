@@ -1,16 +1,16 @@
-/* Cores da paleta:
- * #FEF9F8 (Rosa muito claro)
- * #EFD1D8 (Rosa suave)
- * #D6CAE3 (Lilás suave)
- * #EFCACC (Rosa salmão)
- * #CAC3E4 (Lilás mais escuro)
+/* Cores da nova paleta
+ * Principal: #2c3e50 (azul escuro)
+ * Destaque: #3498db (azul claro vibrante)
+ * Fundo: #ecf0f1 (cinza claro)
+ * Texto: #7f8c8d (cinza médio)
+ * Borda/Detalhe: #bdc3c7 (cinza claro)
  */
 
-/* Estilos gerais */
+/* Estilos Gerais */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #fef9f8; /* Fundo rosa muito claro */
-    color: #333;
+    background-color: #ecf0f1; /* Fundo cinza claro */
+    color: #7f8c8d; /* Cor do texto em cinza médio */
     line-height: 1.6;
     margin: 0;
     padding: 0;
@@ -21,87 +21,96 @@ body {
     margin: 40px auto;
     padding: 30px;
     background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 h1, h2 {
-    color: #333;
-    border-bottom: 2px solid #efcacc; /* Linha de destaque rosa salmão */
-    padding-bottom: 12px;
-    margin-bottom: 25px;
-    font-weight: 500;
+    color: #2c3e50; /* Títulos em azul escuro */
+    border-bottom: 2px solid #bdc3c7; /* Borda cinza clara */
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
 }
 
 a {
-    color: #cac3e4; /* Lilás para links */
+    color: #3498db; /* Azul vibrante para links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #d6cae3;
+    color: #2980b9;
 }
 
 /* Header e Navegação */
 header {
-    background-color: #efcacc; /* Rosa salmão no cabeçalho */
-    color: #ffffff;
-    padding: 30px;
+    background: linear-gradient(to right, #2c3e50, #34495e); /* Gradiente de azul para o cabeçalho */
+    color: #ffffff; /* Texto branco */
+    padding: 40px;
     text-align: center;
-    border-bottom: 5px solid #d6cae3; /* Borda inferior lilás */
+    border-bottom: 5px solid #3498db; /* Borda azul vibrante */
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff; /* Cor da fonte em branco */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
 }
 
 nav {
     background-color: #ffffff;
     text-align: center;
-    padding: 20px;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
 nav a {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 10px 18px;
     font-weight: bold;
-    color: #555;
-    border-radius: 15px;
+    color: #7f8c8d;
+    border-radius: 6px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav a:hover {
-    background-color: #fef9f8;
-    color: #cac3e4;
+    background-color: #ecf0f1;
+    color: #2c3e50;
 }
 
 /* Formulários */
 form {
-    background-color: #fef9f8; /* Fundo do formulário rosa muito claro */
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.02);
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .form-group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: bold;
-    color: #444;
+    color: #2c3e50;
 }
 
 input[type="text"],
 input[type="email"],
 select {
     width: 100%;
-    padding: 15px;
-    border: 1px solid #d6cae3; /* Lilás suave na borda */
-    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 6px;
     box-sizing: border-box;
     font-size: 16px;
+    color: #2c3e50;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -109,21 +118,21 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 select:focus {
     outline: none;
-    border-color: #efd1d8; /* Rosa suave no foco */
-    box-shadow: 0 0 0 4px rgba(239, 209, 216, 0.4);
+    border-color: #3498db; /* Foco em azul vibrante */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
 }
 
 /* Botões */
 button[type="submit"],
 .btn {
     display: inline-block;
-    padding: 15px 30px;
+    padding: 12px 25px;
     font-size: 16px;
     font-weight: bold;
     color: #ffffff;
-    background-color: #cac3e4; /* Lilás para o botão principal */
+    background-color: #3498db; /* Azul vibrante para o botão */
     border: none;
-    border-radius: 12px;
+    border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
     text-align: center;
@@ -131,20 +140,20 @@ button[type="submit"],
 
 button[type="submit"]:hover,
 .btn:hover {
-    background-color: #d6cae3; /* Lilás mais claro ao passar o mouse */
-    transform: translateY(-3px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary {
-    background-color: #efd1d8;
-    color: #333;
-    border: 1px solid #d6cae3;
+    background-color: #bdc3c7; /* Cinza claro para o botão secundário */
+    color: #2c3e50;
+    border: 1px solid #bdc3c7;
 }
 
 .btn-secondary:hover {
-    background-color: #efcacc;
-    color: #333;
+    background-color: #95a5a6;
+    color: #ffffff;
 }
 
 /* Tabelas */
@@ -155,31 +164,31 @@ button[type="submit"]:hover,
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     background-color: #ffffff;
-    border-radius: 15px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
 table thead {
-    background-color: #fef9f8; /* Rosa muito claro para o cabeçalho da tabela */
-    color: #555;
-    border-bottom: 2px solid #efd1d8; /* Borda rosa suave */
+    background-color: #bdc3c7; /* Cabeçalho da tabela em cinza claro */
+    color: #2c3e50;
+    border-bottom: 2px solid #7f8c8d;
 }
 
 table th,
 table td {
-    padding: 18px;
+    padding: 15px;
     text-align: left;
 }
 
 table tbody tr {
-    border-bottom: 1px solid #fef9f8; /* Borda sutil entre as linhas */
+    border-bottom: 1px solid #ecf0f1;
 }
 
 table tbody tr:nth-child(even) {
-    background-color: #f7fafc; /* Fundo cinza muito claro para linhas pares */
+    background-color: #f7f9fb;
 }
 
 table tbody tr:last-child {
@@ -187,47 +196,47 @@ table tbody tr:last-child {
 }
 
 table tbody tr:hover {
-    background-color: #fef9f8; /* Fundo mais claro ao passar o mouse */
+    background-color: #ecf0f1;
 }
 
 .no-data-row {
     text-align: center;
     font-style: italic;
-    color: #777;
+    color: #bdc3c7;
 }
 
 .table-actions {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .action-edit,
 .action-delete {
-    padding: 8px 15px;
-    border-radius: 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
     font-weight: bold;
     box-sizing: border-box;
     text-align: center;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .action-edit {
-    background-color: #d6cae3; /* Lilás suave para 'Editar' */
+    background-color: #3498db; /* Azul vibrante para 'Editar' */
     color: #ffffff;
 }
 
 .action-edit:hover {
-    background-color: #cac3e4;
+    background-color: #2980b9;
 }
 
 .action-delete {
-    background-color: #efd1d8; /* Rosa suave para 'Deletar' */
+    background-color: #e74c3c; /* Vermelho para 'Deletar' */
     color: #ffffff;
 }
 
 .action-delete:hover {
-    background-color: #efcacc;
+    background-color: #c0392b;
 }

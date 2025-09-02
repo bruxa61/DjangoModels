@@ -5,12 +5,14 @@
 
     <form method="post">
         {% csrf_token %}
-        <label for="nome_especialidade_input">Nome da Especialidade:</label>
-        <!-- O atributo 'value' preenche o campo com o nome atual da especialidade -->
-        <input type="text" id="nome_especialidade_input" name="nome_especialidade" value="{{ especialidade.nome_especialidade }}" required>
-        <button type="submit">Salvar Alterações</button>
+        <div class="form-group">
+            <label for="nome_especialidade_input">Nome da Especialidade:</label>
+            <input type="text" class="form-control" id="nome_especialidade_input" name="nome_especialidade" value="{{ especialidade.nome_especialidade }}" required>
+        </div>
+        <button type="submit" class="btn">Salvar Alterações</button>
     </form>
       
-
-    <a href="{% url 'lista_especialidades' %}">Cancelar e voltar para a lista</a>
+    <div class="mt-3">
+        <a href="{% url 'lista_especialidades' %}">Cancelar e voltar para a lista</a>
+    </div>
 {% endblock %}
