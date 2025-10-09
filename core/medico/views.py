@@ -1,121 +1,64 @@
+from django.shortcuts import render
+
+# Create your views here.
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Medico, Especialidade
+from .models import Especialidade, Medico
 from .forms import EspecialidadeForm, MedicoForm
+from django.template import loader
+from django.http import HttpResponse
 
-def lista_especialidades(request):
-    contexto = {'especialidades': Especialidade.objects.all()}
-    return render(request, 'medico/lista_especialidades.html', context=contexto)
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-def lista_medicos(request):
-    contexto = {'medicos': Medico.objects.all()}
-    return render(request, 'medico/lista_medicos.html', context=contexto)
-
-def cadastro_especialidade(request):
-    if request.method == 'POST':
-        nome_digitado = request.POST.get('nome_especialidade')
-        if nome_digitado:
-            Especialidade.objects.create(nome_especialidade=nome_digitado)
-        return redirect('lista_especialidades')
-    
-    return render(request, 'medico/cadastro_especialidade.html')
-
-def cadastro_medico(request):
-    if request.method == 'POST':
-        nome = request.POST.get('nome')
-        sobrenome = request.POST.get('sobrenome')
-        email = request.POST.get('email')
-        ids_especialidades = request.POST.getlist('especialidades')
-
-        novo_medico = Medico.objects.create(nome=nome, sobrenome=sobrenome, email=email)
-        novo_medico.nome_especialidade.set(ids_especialidades)
-        
-        return redirect('lista_medicos')
-
-    contexto = {'especialidades': Especialidade.objects.all()}
-    return render(request, 'medico/cadastro_medico.html', context=contexto)
-
-def deletar_especialidade(request, id_especialidade):
-    especialidade_para_deletar = Especialidade.objects.get(id=id_especialidade)
-    especialidade_para_deletar.delete()
-    return redirect('lista_especialidades')
-
-def deletar_medico(request, id_medico):
-    medico_para_deletar = Medico.objects.get(id=id_medico)
-    medico_para_deletar.delete()
-    return redirect('lista_medicos')
-
-def editar_especialidade(request, id_especialidade):
-    especialidade_para_editar = Especialidade.objects.get(id=id_especialidade)
-    if request.method == 'POST':
-        novo_nome = request.POST.get('nome_especialidade')
-        if novo_nome:
-            especialidade_para_editar.nome_especialidade = novo_nome
-            especialidade_para_editar.save()
-        return redirect('lista_especialidades')
-    
-    contexto = {'especialidade': especialidade_para_editar}
-    return render(request, 'medico/editar_especialidade.html', context=contexto)
-
-
-def editar_medico(request, id_medico):
-    medico_para_editar = Medico.objects.get(id=id_medico)
-    if request.method == 'POST':
-        medico_para_editar.nome = request.POST.get('nome')
-        medico_para_editar.sobrenome = request.POST.get('sobrenome')
-        medico_para_editar.email = request.POST.get('email')
-        ids_especialidades = request.POST.getlist('especialidades')
-        
-        medico_para_editar.save()
-        medico_para_editar.nome_especialidade.set(ids_especialidades)
-        
-        return redirect('lista_medicos')
-
-    contexto = {
-        'medico': medico_para_editar,
-        'especialidades': Especialidade.objects.all() 
-    }
-    return render(request, 'medico/editar_medico.html', context=contexto)
-
-class EspecialidadeListView(ListView):
+class EspecialidadeListView(LoginRequiredMixin, ListView):
     model = Especialidade
     template_name = 'especialidade_list.html'
+   
 
-class EspecialidadeCreateView(CreateView):
+class EspecialidadeCreateView(LoginRequiredMixin, CreateView):
     model = Especialidade
     form_class = EspecialidadeForm
     template_name = 'especialidade_form.html'
     success_url = reverse_lazy('especialidade_list')
 
-class EspecialidadeUpdateView(UpdateView):
+
+class EspecialidadeUpdateView(LoginRequiredMixin,UpdateView):
     model = Especialidade
     form_class = EspecialidadeForm
     template_name = 'especialidade_form.html'
     success_url = reverse_lazy('especialidade_list')
 
-class EspecialidadeDeleteView(DeleteView):
+
+class EspecialidadeDeleteView(LoginRequiredMixin, DeleteView):
     model = Especialidade
     template_name = 'especialidade_confirm_delete.html'
     success_url = reverse_lazy('especialidade_list')
 
-class MedicoListView(ListView):
+
+class MedicoListView(LoginRequiredMixin, ListView):
     model = Medico
     template_name = 'medico_list.html'
+   
 
-class MedicoCreateView(CreateView):
+class MedicoCreateView(LoginRequiredMixin, CreateView):
     model = Medico
     form_class = MedicoForm
     template_name = 'medico_form.html'
     success_url = reverse_lazy('medico_list')
 
-class MedicoUpdateView(UpdateView):
+
+class MedicoUpdateView(LoginRequiredMixin, UpdateView):
     model = Medico
     form_class = MedicoForm
     template_name = 'medico_form.html'
     success_url = reverse_lazy('medico_list')
 
-class MedicoDeleteView(DeleteView):
+
+class MedicoDeleteView(LoginRequiredMixin, DeleteView):
     model = Medico
     template_name = 'medico_confirm_delete.html'
     success_url = reverse_lazy('medico_list')
+
+def homepage(request):
+    return render(request, "home.html")
