@@ -6,6 +6,6 @@ from core import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('', include('medico.urls')),
+    path('', include('medicos.urls')),  # Inclui as URLs do seu aplicativo
     path('', include('accounts.urls')),  # Inclui as URLs do seu aplicativo    
 ]  

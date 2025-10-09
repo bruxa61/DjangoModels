@@ -14,7 +14,7 @@ def user_login(request):
                 return redirect('home')  # Redirecionar para a página inicial após o login
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
 
 def user_register(request):
     if request.method == 'POST':
@@ -24,14 +24,14 @@ def user_register(request):
             return redirect('login')  # Redirecionar para a página de login após o registro
     else:
         form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 def password_reset(request):
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
         if form.is_valid():
             # Lógica para enviar o email de recuperação de senha
-            return redirect('password_reset_done')  # Redirecionar para a página de confirmação de email
+            return redirect('accounts/password_reset_done')  # Redirecionar para a página de confirmação de email
     else:
         form = PasswordResetForm()
-    return render(request, 'password_reset.html', {'form': form})
+    return render(request, 'accounts/password_reset.html', {'form': form})
