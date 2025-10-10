@@ -9,31 +9,39 @@
 </head>
 <body>
     <header>
-        <h1>Meu Site</h1>
-        {% if user.is_authenticated %}
-            <p>Olá, {{ user.username }}!</p>
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %} 
-                <!-- #csrf_token is very important to have as this is POST request -->
-                <button type="submit">Logout</button>
-            </form>
-        {% else %}
-            <a href="{% url 'login' %}" class="button">LOGIN</a>
-        {% endif %}
+        <div class="logo">
+            <h1>Meu Site</h1>
+        </div>
+
         <nav>
             <ul>
-                <li><a href="{% url 'home' %}" class="button">Home</a></li>
-                <li><a href="{% url 'especialidade_list' %}">Especialidades</a></li>
-                <li><a href="{% url 'medico_list' %}">Médicos</a></li>
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'especialidade_list' %}" class="nav-link">Especialidades</a></li>
+                <li><a href="{% url 'medico_list' %}" class="nav-link">Médicos</a></li>
             </ul>
         </nav>
+
+        <div class="user-area">
+            {% if user.is_authenticated %}
+                <span>Olá, {{ user.username }}!</span>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">Sair</button>
+                </form>
+            {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Entrar</a>
+            {% endif %}
+        </div>
     </header>
+
     <main>
         {% block content %}{% endblock %}
     </main>
+
     <footer>
-        <p>&copy; 2024 Meu Site</p>
+        <p>&copy; 2025 Meu Site</p>
     </footer>
+
     <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 </html>
